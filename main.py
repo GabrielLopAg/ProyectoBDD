@@ -1,0 +1,15 @@
+from database import connect
+
+def main():
+    
+    try:
+        cursor = connect()
+        cursor.execute("SELECT * FROM tarea")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+    except Exception as ex:
+        print(f"Error durante la conexión: {ex}")
+
+
+
