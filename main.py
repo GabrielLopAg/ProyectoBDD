@@ -4,7 +4,7 @@ def main():
     
     try:
         cursor = connect()
-        cursor.execute("SELECT * FROM tarea")
+        cursor.execute("SELECT * FROM testtable")
         rows = cursor.fetchall()
         for row in rows:
             print(row)
