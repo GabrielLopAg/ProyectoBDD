@@ -12,4 +12,8 @@ def main():
         print(f"Error durante la conexión: {ex}")
 
 
+if __name__ == '__main__':
+    main()
+
+
 
