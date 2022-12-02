@@ -49,22 +49,29 @@ def switch(argument):
             return "Ingresa otra opcion"
 
 
-def sp7():
+def sp1():
     cursor = connect()
-    storedProc = "Exec [dbo].[sp_queryG] @p_EmailAntes = ?, @p_EmailNuevo = ?"
-    emailAntes = input('Ingresa un email: ')
-    emailNuevo = input('Ingresa un nuevo email: ')
-    params = (str(emailAntes), str(emailNuevo))
+    storedProc = "Exec [dbo].[sp_queryA] @cat = ?"
+    cat = input('Ingresa una categoria: ')
+    params = (int(cat))
     cursor.execute(storedProc, params)
     return cursor.fetchall()
 
 
-def sp6():
+def sp2_4(arg0):
     cursor = connect()
-    storedProc = "Exec [dbo].[sp_queryF] @p_SalesOrderID = ?, @p_MethodEnvioID = ?"
-    salesOrderID = input('Ingresa un ID de venta: ')
-    methodEnvioID = input('Ingresa un ID de metodo de envio: ')
-    params = (int(salesOrderID), int(methodEnvioID))
+    storedProc = arg0
+    params = ()
+    cursor.execute(storedProc, params)
+    return cursor.fetchall()
+
+
+def sp3():
+    cursor = connect()
+    storedProc = "Exec [dbo].[sp_queryC] @producto = ?, @localidad = ?"
+    producto = input('Ingresa un producto: ')
+    localidad = input('Ingresa una localidad: ')
+    params = (producto, localidad)
     cursor.execute(storedProc, params)
     return cursor.fetchall()
 
@@ -80,29 +87,22 @@ def sp5():
     return cursor.fetchall()
 
 
-def sp3():
+def sp6():
     cursor = connect()
-    storedProc = "Exec [dbo].[sp_queryC] @producto = ?, @localidad = ?"
-    producto = input('Ingresa un producto: ')
-    localidad = input('Ingresa una localidad: ')
-    params = (producto, localidad)
+    storedProc = "Exec [dbo].[sp_queryF] @p_SalesOrderID = ?, @p_MethodEnvioID = ?"
+    salesOrderID = input('Ingresa un ID de venta: ')
+    methodEnvioID = input('Ingresa un ID de metodo de envio: ')
+    params = (int(salesOrderID), int(methodEnvioID))
     cursor.execute(storedProc, params)
     return cursor.fetchall()
 
 
-def sp1():
+def sp7():
     cursor = connect()
-    storedProc = "Exec [dbo].[sp_queryA] @cat = ?"
-    cat = input('Ingresa una categoria: ')
-    params = (int(cat))
-    cursor.execute(storedProc, params)
-    return cursor.fetchall()
-
-
-def sp2_4(arg0):
-    cursor = connect()
-    storedProc = arg0
-    params = ()
+    storedProc = "Exec [dbo].[sp_queryG] @p_EmailAntes = ?, @p_EmailNuevo = ?"
+    emailAntes = input('Ingresa un email: ')
+    emailNuevo = input('Ingresa un nuevo email: ')
+    params = (str(emailAntes), str(emailNuevo))
     cursor.execute(storedProc, params)
     return cursor.fetchall()
 
