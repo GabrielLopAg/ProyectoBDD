@@ -49,7 +49,7 @@ def switch(argument):
             return "Ingresa otra opcion"
 
 
-def sp1():
+def sp7():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryG] @p_EmailAntes = ?, @p_EmailNuevo = ?"
     emailAntes = input('Ingresa un email: ')
@@ -59,7 +59,7 @@ def sp1():
     return cursor.fetchall()
 
 
-def sp3():
+def sp6():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryF] @p_SalesOrderID = ?, @p_MethodEnvioID = ?"
     salesOrderID = input('Ingresa un ID de venta: ')
@@ -80,7 +80,7 @@ def sp5():
     return cursor.fetchall()
 
 
-def sp6():
+def sp3():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryC] @producto = ?, @localidad = ?"
     producto = input('Ingresa un producto: ')
@@ -90,7 +90,7 @@ def sp6():
     return cursor.fetchall()
 
 
-def sp7():
+def sp1():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryA] @cat = ?"
     cat = input('Ingresa una categoria: ')
@@ -108,9 +108,10 @@ def sp2_4(arg0):
 
 
 def main():
-    query = input('Selecciona una consulta: ')
-    result = switch(query)
-    print(result)
+    while (1):
+        query = input('Selecciona una consulta: ')
+        result = switch(query)
+        print(result)
 
 
 if __name__ == '__main__':
