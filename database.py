@@ -19,3 +19,4 @@ def connect():
         return cursor
     except Exception as ex:
         print(f"Error durante la conexión: {ex}")
+        exit(1)
