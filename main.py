@@ -7,48 +7,49 @@ def switch(argument):
             try:
                 return sp1()
             except Exception as ex:
-                print(f"Error durante la conexión: {ex}")
+                print(f"Error durante la conexion: {ex}")
                 return None
         case 'b':
             try:
                 return sp2_4("Exec [dbo].[sp_queryB]")
             except Exception as ex:
-                print(f"Error durante la conexión: {ex}")
+                print(f"Error durante la conexion: {ex}")
                 return None
         case 'c':
             try:
                 return sp3()
             except Exception as ex:
-                print(f"Error durante la conexión: {ex}")
+                print(f"Error durante la conexion: {ex}")
                 return None
         case 'd':
             try:
                 return sp2_4("Exec [dbo].[sp_queryD]")
             except Exception as ex:
-                print(f"Error durante la conexión: {ex}")
+                print(f"Error durante la conexion: {ex}")
                 return None
         case 'e':
             try:
                 return sp5()
             except Exception as ex:
-                print(f"Error durante la conexión: {ex}")
+                print(f"Error durante la conexion: {ex}")
                 return None
         case 'f':
             try:
                 return sp6()
             except Exception as ex:
-                print(f"Error durante la conexión: {ex}")
+                print(f"Error durante la conexion: {ex}")
                 return None
         case 'g':
             try:
                 return sp7()
             except Exception as ex:
-                print(f"Error durante la conexión: {ex}")
+                print(f"Error durante la conexion: {ex}")
                 return None
         case default:
             return "Ingresa otra opcion"
 
 
+# Consulta A
 def sp1():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryA] @cat = ?"
@@ -58,6 +59,7 @@ def sp1():
     return cursor.fetchall()
 
 
+# Consultas B y D
 def sp2_4(arg0):
     cursor = connect()
     storedProc = arg0
@@ -66,6 +68,7 @@ def sp2_4(arg0):
     return cursor.fetchall()
 
 
+# Consulta C
 def sp3():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryC] @producto = ?, @localidad = ?"
@@ -73,9 +76,13 @@ def sp3():
     localidad = input('Ingresa una localidad: ')
     params = (producto, localidad)
     cursor.execute(storedProc, params)
-    return cursor.fetchall()
+    results = cursor.fetchall()
+    cursor.commit()
+
+    return results
 
 
+# Consulta E
 def sp5():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryE] @qty = ?, @salesID = ?, @productID = ?"
@@ -84,9 +91,13 @@ def sp5():
     productID = input('Ingresa un ID de producto: ')
     params = (int(qty), int(salesID), int(productID))
     cursor.execute(storedProc, params)
-    return cursor.fetchall()
+    results = cursor.fetchall()
+    cursor.commit()
+
+    return results
 
 
+# Consulta F
 def sp6():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryF] @p_SalesOrderID = ?, @p_MethodEnvioID = ?"
@@ -94,9 +105,13 @@ def sp6():
     methodEnvioID = input('Ingresa un ID de metodo de envio: ')
     params = (int(salesOrderID), int(methodEnvioID))
     cursor.execute(storedProc, params)
-    return cursor.fetchall()
+    results = cursor.fetchall()
+    cursor.commit()
+
+    return results
 
 
+# Consulta G
 def sp7():
     cursor = connect()
     storedProc = "Exec [dbo].[sp_queryG] @p_EmailAntes = ?, @p_EmailNuevo = ?"
@@ -104,7 +119,10 @@ def sp7():
     emailNuevo = input('Ingresa un nuevo email: ')
     params = (str(emailAntes), str(emailNuevo))
     cursor.execute(storedProc, params)
-    return cursor.fetchall()
+    results = cursor.fetchall()
+    cursor.commit()
+
+    return results
 
 
 def main():
